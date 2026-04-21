@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Logo extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'image',
+        'user_id',
+    ];
+
+    public function users(){
+    return $this->belongsTo(User::class);
+    }
 }

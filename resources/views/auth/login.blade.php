@@ -222,7 +222,21 @@
                 <h2>Login</h2>
                 <p>Enter your account details to continue.</p>
 
-                <form class="auth-form">
+                <form class="auth-form" method="POST" action="{{ route('checkLogin') }}">
+                    @csrf
+                    @if(session('msg'))
+                    <div id="flash-msg" style="color:red; padding:10px; background:#ffe6e6; margin-bottom:10px;">
+                        {{ session('msg') }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            var flashMsg = document.getElementById('flash-msg');
+                            if (flashMsg) {
+                                flashMsg.style.display = 'none';
+                            }
+                        }, 3000);
+                    </script>
+                    @endif
                     <div class="auth-field">
                         <label for="email">Email Address</label>
                         <input id="email" name="email" type="email" placeholder="you@example.com">
