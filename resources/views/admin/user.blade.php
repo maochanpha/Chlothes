@@ -42,47 +42,28 @@
                     <table class="admin-table">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>User</th>
                                 <th>Email</th>
                                 <th>Role</th>
-                                <th>Orders</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><span class="table-item"><img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt=""> Jacob Jones</span></td>
-                                <td>jacob@example.com</td>
-                                <td>Customer</td>
-                                <td>18</td>
-                                <td><span class="badge green">Active</span></td>
-                                <td><span class="table-actions"><button class="icon-action" type="button">&#9998;</button><button class="icon-action" type="button">&#8942;</button></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="table-item"><img class="avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt=""> Samuel Ethan</span></td>
-                                <td>samuel@example.com</td>
-                                <td>Admin</td>
-                                <td>4</td>
-                                <td><span class="badge blue">Staff</span></td>
-                                <td><span class="table-actions"><button class="icon-action" type="button">&#9998;</button><button class="icon-action" type="button">&#8942;</button></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="table-item"><img class="avatar" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=100&q=80" alt=""> Annette Black</span></td>
-                                <td>annette@example.com</td>
-                                <td>Customer</td>
-                                <td>27</td>
-                                <td><span class="badge green">Active</span></td>
-                                <td><span class="table-actions"><button class="icon-action" type="button">&#9998;</button><button class="icon-action" type="button">&#8942;</button></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="table-item"><span class="avatar" style="display:grid;place-items:center;color:#c96d38;font-weight:800;">E</span> Eleanor Pena</span></td>
-                                <td>eleanor@example.com</td>
-                                <td>Customer</td>
-                                <td>9</td>
-                                <td><span class="badge">Pending</span></td>
-                                <td><span class="table-actions"><button class="icon-action" type="button">&#9998;</button><button class="icon-action" type="button">&#8942;</button></span></td>
-                            </tr>
+                            @foreach ( $data as $d )
+                                <tr>
+                                    <td>{{ $d['id']}}</td>
+                                    <td>{{ $d['name']}}</td>
+                                    <td>{{ $d['email']}}</td>
+                                    <td>{{ $d['role']==1?'admin':'user'}}</td>
+                                    <td>
+                                    <span class="table-actions">
+                                        <a class="icon-action edit-icon" href="{{ url('/admin/category/'.$d['id'].'/edit') }}" aria-label="Update Essentials">&#9998;</a>
+                                        <a class="icon-action delete-icon" href="{{ url('/admin/category/' . $d->id . '/delete') }}" aria-label="Delete {{ $d['cate_name'] }}" onclick="return confirm('Delete this category?')">&#128465;</a>
+                                    </span>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -87,7 +87,8 @@
                     </div>
                 </div>
 
-                <form class="admin-form" id="add-category-form">
+                <form class="admin-form" id="add-category-form" action="{{route('createCategory')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-grid">
                         <div class="form-field">
                             <label for="cate-name">Category Name</label>

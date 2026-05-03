@@ -212,10 +212,11 @@
                 <h2>Create Account</h2>
                 <p>Join Threadline Studio and start building your wardrobe.</p>
 
-                <form class="auth-form">
+                <form class="auth-form" method="POST" action="{{ route('register') }}">
+                    @csrf
                     <div class="auth-field">
-                        <label for="username">Username</label>
-                        <input id="username" name="username" type="text" placeholder="Enter username">
+                        <label for="name">Username</label>
+                        <input id="name" name="name" type="text" placeholder="Enter username">
                     </div>
 
                     <div class="auth-field">

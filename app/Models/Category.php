@@ -14,7 +14,7 @@ class Category extends Model
         'user_id',
     ];
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function products(){
         return $this->hasMany(Product::class);

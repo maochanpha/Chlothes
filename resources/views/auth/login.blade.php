@@ -230,10 +230,7 @@
                     </div>
                     <script>
                         setTimeout(function() {
-                            var flashMsg = document.getElementById('flash-msg');
-                            if (flashMsg) {
-                                flashMsg.style.display = 'none';
-                            }
+                            document.getElementById('flash-msg').style.display = 'none';
                         }, 3000);
                     </script>
                     @endif

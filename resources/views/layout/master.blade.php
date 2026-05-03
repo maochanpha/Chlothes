@@ -132,6 +132,11 @@
             white-space: nowrap;
         }
 
+        button.button {
+            cursor: pointer;
+            font: inherit;
+        }
+
         .button.secondary {
             background: transparent;
             color: var(--ink);
@@ -369,9 +374,16 @@
 
             <div class="nav-actions">
                 <a class="icon-button" href="#" aria-label="Search">&#8981;</a>
-                
+
+                @if(Auth::check())
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="button">Logout</button>
+                </form>
+                @else
                 <a class="button" href="{{ url('/login') }}">Login</a>
                 <a class="button" href="{{ url('/register') }}">Register</a>
+                @endif
             </div>
         </nav>
     </header>

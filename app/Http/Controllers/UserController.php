@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index(){
-        return view('user.index');
+        $cate=Category::all();
+        $pro=Product::all();
+        return view('user.index', compact('cate', 'pro'));
     }
     public function dashboard(){
         return view('admin.dashboard');
@@ -46,4 +50,12 @@ class UserController extends Controller
         return redirect('/login')->with("msg","Invalid email or password");
     }
 }
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
+    public function user(){
+        $data=User::all();
+        return view('admin.user', compact('data'));
+    }
 }

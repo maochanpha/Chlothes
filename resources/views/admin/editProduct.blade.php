@@ -106,11 +106,11 @@
 
                         <div class="form-field">
                             <label for="product-category">Category</label>
-                            <select id="product-category" name="category">
-                                <option>Outerwear</option>
-                                <option>Dresses</option>
-                                <option>Essentials</option>
-                                <option>Streetwear</option>
+                            <select id="product-category" name="cate_id">
+                                <option value="" disabled selected>Select Category</option>
+                                @foreach ($cate as $c)
+                                <option value="{{$c['id']}}">{{ $c['cate_name']}}</option>
+                                @endforeach
                             </select>
                         </div>
 

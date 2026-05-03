@@ -48,28 +48,33 @@
                                 <th>ID</th>
                                 <th>Image</th>
                                 <th>Category Name</th>
+                                <th>Created By</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                         <tbody>
+                            @foreach($cate as $c)
                             <tr>
-                                <td>CAT-001</td>
-                                <td><img class="table-thumb" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=120&q=80" alt="Dresses category"></td>
-                                <td>Dresses</td>
-                                <td><span class="table-actions"><a class="icon-action edit-icon" href="{{ url('/admin/category/edit') }}" aria-label="Update Dresses">&#9998;</a><button class="icon-action" type="button" aria-label="More actions">&#8942;</button></span></td>
+                                <td>{{$c['id']}}</td>
+                                <td>
+                                    <img src="{{$c['image']}}" alt="" width="40px">
+                                </td>
+                                <td>{{$c['cate_name']}}</td>
+                                <td>{{$c->users->name}}</td>
+                                <td>{{$c['created_at']}}</td>
+                                <td>{{$c['updated_at']}}</td>
+
+                                <td>
+                                    <span class="table-actions">
+                                        <a class="icon-action edit-icon" href="{{ url('/admin/category/'.$c['id'].'/edit') }}" aria-label="Update Essentials">&#9998;</a>
+                                        <a class="icon-action delete-icon" href="{{ url('/admin/category/' . $c->id . '/delete') }}" aria-label="Delete {{ $c['cate_name'] }}" onclick="return confirm('Delete this category?')">&#128465;</a>
+                                    </span>
+                                </td>
+                            
                             </tr>
-                            <tr>
-                                <td>CAT-002</td>
-                                <td><img class="table-thumb" src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=120&q=80" alt="Streetwear category"></td>
-                                <td>Streetwear</td>
-                                <td><span class="table-actions"><a class="icon-action edit-icon" href="{{ url('/admin/category/edit') }}" aria-label="Update Streetwear">&#9998;</a><button class="icon-action" type="button" aria-label="More actions">&#8942;</button></span></td>
-                            </tr>
-                            <tr>
-                                <td>CAT-003</td>
-                                <td><img class="table-thumb" src="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=120&q=80" alt="Essentials category"></td>
-                                <td>Essentials</td>
-                                <td><span class="table-actions"><a class="icon-action edit-icon" href="{{ url('/admin/category/edit') }}" aria-label="Update Essentials">&#9998;</a><button class="icon-action" type="button" aria-label="More actions">&#8942;</button></span></td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
